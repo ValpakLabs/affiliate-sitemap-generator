@@ -1,14 +1,23 @@
 {
-  "name": "sitemap-generator",
+  "name": "affiliate-sitemap-generator",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
+  "author": {
+    "name": "Darek Rossman",
+    "email": "darekrossman@me.com",
+    "url": "https://github.com/subpopular"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf lib && mkdir lib && babel ./*.js --stage 0 --out-dir lib"
   },
   "author": "Darek Rossman <darekrossman@me.com> (https://github.com/subpopular)",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ValpakLabs/affiliate-sitemap-generator.git"
+  },
   "dependencies": {
     "mongodb": "^2.0.34"
   },
