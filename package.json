@@ -14,10 +14,10 @@
     "url": "https://github.com/ValpakLabs/affiliate-sitemap-generator.git"
   },
   "dependencies": {
-    "mongodb": "^2.0.34"
+    "mongodb": "^2.0.34",
+    "babel-runtime": "^5.5.8"
   },
   "devDependencies": {
-    "babel": "^5.5.8",
-    "babel-runtime": "^5.5.8"
+    "babel": "^5.5.8"
   }
 }
