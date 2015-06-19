@@ -3,16 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
-  "author": {
-    "name": "Darek Rossman",
-    "email": "darekrossman@me.com",
-    "url": "https://github.com/subpopular"
-  },
+  "author": "Darek Rossman <darekrossman@me.com> (https://github.com/subpopular)",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf lib && mkdir lib && babel ./*.js --stage 0 --out-dir lib"
+    "build": "rm -rf lib && mkdir lib && babel --optional runtime ./*.js --stage 0 --out-dir lib"
   },
-  "author": "Darek Rossman <darekrossman@me.com> (https://github.com/subpopular)",
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -22,6 +17,7 @@
     "mongodb": "^2.0.34"
   },
   "devDependencies": {
-    "babel": "^5.5.8"
+    "babel": "^5.5.8",
+    "babel-runtime": "^5.5.8"
   }
 }
