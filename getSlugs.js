@@ -1,20 +1,14 @@
-var MongoDB = require('mongodb');
-var MongoClient = MongoDB.MongoClient;
+var MongoClient = require('mongodb').MongoClient;
 
-var dbHost = 'mongodb://mongodb-01.coxtarget.com/valpak';
-var collection = 'MerchantMetaDataVO';
-
-
-module.exports = async function() {
-  return await run();
+module.exports = async function(mongoHost) {
+  return await run(mongoHost);
 }
 
 ////////////////////////////
 
-async function run() {
-  console.log('\nGenerating sitemap\n');
-  var db = await connectToDB(dbHost);
-  return await find(db.collection(collection), {}, {url: true, partnerId: true, _id: false});
+async function run(mongoHost) {
+  var db = await connectToDB(mongoHost);
+  return await find(db.collection('MerchantMetaDataVO'), {}, {url: true, partnerId: true, _id: false});
 }
 
 function connectToDB(mongoHost) {
