@@ -1,10 +1,10 @@
 var getSlugs = require('./getSlugs');
 
-module.exports = async function(options) {
+module.exports = async function(mongoHost) {
 
   var xml = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 
-  (await getSlugs()).forEach(slug => {
+  (await getSlugs(mongoHost)).forEach(slug => {
     var url = `https://www.valpak.${slug.partnerId === 7 ? 'com' : 'ca'}/c/coupon-codes/${slug.url}`;
     xml += `<url>
       <loc>${url}</loc>
