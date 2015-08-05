@@ -1,30 +1,36 @@
 var MongoClient = require('mongodb').MongoClient;
 
-module.exports = async function(mongoHost) {
-  return await run(mongoHost);
-}
+module.exports = async (mongoHost) => await run(mongoHost);
 
 ////////////////////////////
 
 async function run(mongoHost) {
   var db = await connectToDB(mongoHost);
-  return await find(db.collection('MerchantMetaDataVO'), {}, {url: true, partnerId: true, _id: false});
+  var results = await find(db.collection('MerchantMetaDataVO'), {}, {url: true, partnerId: true, _id: false});
+  await close(db);
+  return results;
 }
 
 function connectToDB(mongoHost) {
   return new Promise((resolve, reject) => {
-    MongoClient.connect(mongoHost, function(err, db) {
-      if (err) reject(err)
-      else resolve(db)
-    })
+    MongoClient.connect(mongoHost, (err, db) => {
+      if (err) reject(err);
+      else resolve(db);
+    });
+  });
+}
+
+function closeDb(db) {
+  return new Promise((resolve, reject) => {
+    db.close(() => resolve());
   });
 }
 
 function find(collection, query, projection={}) {
   return new Promise((resolve, reject) => {
-    collection.find(query, projection).toArray(function(err, result){
-      if (err) reject(err)
-      else resolve(result)
-    })
+    collection.find(query, projection).toArray((err, result) => {
+      if (err) reject(err);
+      else resolve(result);
+    });
   });
 }
