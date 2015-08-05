@@ -7,7 +7,7 @@ module.exports = async (mongoHost) => await run(mongoHost);
 async function run(mongoHost) {
   var db = await connectToDB(mongoHost);
   var results = await find(db.collection('MerchantMetaDataVO'), {}, {url: true, partnerId: true, _id: false});
-  await close(db);
+  await closeDb(db);
   return results;
 }
 
